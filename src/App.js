@@ -1,23 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import "./App.css";
+import Age from "./components/Age";
+import Name from "./components/Name";
+import Table from './components/Table';
 
 function App() {
+  const [sortBy, setsortBy] = useState('');
+
+
+
+  const onAgehandle = () => {
+    console.log("Age clicked");
+    setsortBy('age');
+  };
+
+  const onNamehandle = () => {
+    console.log("Name clicked");
+    setsortBy('name');
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Employee List Table</h1>
+        <div className="text-center buttons">
+          <Age clicked={onAgehandle}></Age>
+          <Name clicked={onNamehandle}></Name>
+          <Table sortBy={sortBy}></Table>
+        </div>
       </header>
     </div>
   );
